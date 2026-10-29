@@ -126,6 +126,10 @@ Python 依赖（edge-tts、pypinyin、numpy、imageio-ffmpeg）由 uv 临时安�
 
 只有稿子文字会发送到语音服务（微软 Edge 或火山引擎）。头像图片和渲染全部在本机完成。
 
+## 经验记录
+
+踩过的坑、排查方法和调参时用的指标见 [LESSONS.md](LESSONS.md)。
+
 ## 已知限制
 
 - 嘴型按拼音韵母映射到 あ/い/う/え/お。豆包按字对齐；Edge 在同一个词里平均分配时间。
