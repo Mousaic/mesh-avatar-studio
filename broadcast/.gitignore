@@ -1,0 +1,4 @@
+# secrets
+.env
+# vendor documentation that may not be redistributed
+*.pdf
