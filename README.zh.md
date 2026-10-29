@@ -133,6 +133,21 @@ npm run create -- --random --prompt "银色短发，校服"
 
 [Player](https://shinshin86.github.io/mesh-avatar-studio/play/) 完全在浏览器内运行面部追踪、麦克风口型同步、表情和光照。打开示例或你自己的 `.mavatar` 文件即可，不会上传任何内容。它没有直播地址：选择**打开虚拟形象窗口**（Chrome 或 Edge），在 OBS 里用**窗口采集**配合绿色背景和色度键滤镜添加该窗口。透明背景、OBS 浏览器来源和从其他应用切换表情需要使用 Studio 的直播页面。
 
+## 播报短视频
+
+`broadcast/` 把文字稿批量做成竖屏新闻播报风格的 MP4：语音合成朗读，头像按音量和拼音对口型，
+带标题栏和字幕。稿子里写 `[开心]` 这类表情标记，可以切换表情；使用豆包时还会改变说话语气。
+每篇 `.txt` 稿子生成一条视频。
+
+```sh
+node broadcast/make.mjs projects/<名称> broadcast/scripts --engine doubao
+```
+
+语音可以用微软 Edge TTS（免费，默认），也可以用火山引擎豆包 2.0（提供逐字时间戳）。
+使用豆包时，把 `TTS_API_KEY` 写进 `broadcast/.env`，这个文件已被 git 忽略。
+只有稿子文字会发送到语音服务；头像在本机渲染，视频输出到 `projects/<名称>/videos/`。
+选项、表情标记和嘴巴动作风格见[播报视频指南](broadcast/README.md)。
+
 ## 实验性原生运行时
 
 仓库提供 Rust 运行时、PNG 渲染器和适用于 macOS 的透明桌面虚拟形象程序，
@@ -149,6 +164,7 @@ npm run create -- --random --prompt "银色短发，校服"
 - [参考文档](docs/reference.md)：项目结构、手动重建图层、所有编辑器控件、测试
 - [绑定字段说明](docs/rig-fields.md)：`rig.json` 中每个值的意义
 - [虚拟形象格式](docs/format.md)：文件夹和 `.mavatar` 结构、元数据和校验
+- [播报视频指南](broadcast/README.md)：用文字稿批量生成播报短视频
 
 ## 许可证
 

@@ -209,6 +209,23 @@ window** (Chrome or Edge) and add that window to OBS with **Window Capture** on 
 background and a Chroma Key filter. Transparency, the OBS Browser Source and switching
 expressions from other apps need Studio's Live page.
 
+## Broadcast videos
+
+`broadcast/` turns text scripts into vertical news-style MP4s with your avatar: speech
+synthesis, lip sync from loudness and pinyin, a title band, subtitles, and expression marks such
+as `[开心]` that switch the face and, with Doubao, the tone of voice. Each `.txt` script becomes
+one video.
+
+```sh
+node broadcast/make.mjs projects/<name> broadcast/scripts --engine doubao
+```
+
+Speech comes from Microsoft Edge TTS (free, the default) or Volcengine Doubao 2.0, which gives
+per-character timestamps; put `TTS_API_KEY` in `broadcast/.env`, which git ignores. Only the
+script text is sent to the speech service; the avatar is rendered locally, and videos go to
+`projects/<name>/videos/`. The [broadcast guide](broadcast/README.md) (in Chinese) lists the
+options, expression marks and mouth movement styles.
+
 ## Experimental native runtime
 
 A Rust runtime, PNG renderer and transparent macOS desktop avatar are available in
@@ -235,6 +252,7 @@ locally before opening a PR; CI runs the other checks and does not install Playw
 - [Reference](docs/reference.md): projects, building layers by hand, all editor controls, tests
 - [Rig fields](docs/rig-fields.md): what every value in `rig.json` means
 - [Avatar format](docs/format.md): folder and `.mavatar` layouts, metadata and validation
+- [Broadcast guide](broadcast/README.md): batch broadcast videos from text scripts (in Chinese)
 
 ## License
 
